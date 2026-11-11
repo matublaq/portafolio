@@ -4,7 +4,7 @@ import subprocess
 from pathlib import Path
 
 REPOS_FILE = Path(__file__).parent / "repos.txt"
-DEFAULT_CACHE_DIR = Path(__file__).resolve().parent / "ignore_cache" / "repositorios"
+DEFAULT_CACHE_DIR = Path(__file__).resolve().parent / "cache" / "ignore_repositorios"
 CACHE_DIR = Path(os.environ.get("REPOS_CACHE_DIR", str(DEFAULT_CACHE_DIR)))
 PAGES_DIR = Path(__file__).resolve().parent / "pages"
 DEPTH = int(os.environ.get("GIT_CLONE_DEPTH", "1"))
