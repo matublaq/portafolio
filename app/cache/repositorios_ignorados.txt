@@ -1,0 +1,1 @@
+Hay una carpeta que se llama ignore_repositorios en donde dentro estan las copias de todos los proyectos. 
