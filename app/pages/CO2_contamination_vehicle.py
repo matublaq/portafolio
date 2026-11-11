@@ -3,7 +3,7 @@ import sys
 from pathlib import Path
 import streamlit as st
 
-repo_dir = Path(r"/app/cache/repositorios/CO2_contamination_vehicle")
+repo_dir = Path(r"/app/cache/ignore_repositorios/CO2_contamination_vehicle")
 
 if not repo_dir.exists():
     st.error(f"El repositorio {repo_dir.name} no se encuentra sincronizado.")
