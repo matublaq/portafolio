@@ -1,0 +1,10 @@
+numpy
+pandas
+polars
+duckdb
+pyarrow
+streamlit
+altair
+matplotlib
+seaborn
+scikit-learn

@@ -1,0 +1,22 @@
+services:
+  streamlit:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio_streamlit
+    restart: unless-stopped
+
+    # IMPORTANTE:
+    # Publicamos el puerto SOLO en localhost del host.
+    # Así la web NO queda expuesta directamente a Internet,
+    # y el acceso público lo dará Cloudflare Tunnel.
+    ports:
+      - "127.0.0.1:8501:8501"
+
+    # Sincroniza la carpeta local "/app" dentro del contenedor en vivo. 
+    volumes:
+      - ./app:/app
+      - portfolio_repos:/data/repos
+
+volumes:
+  portfolio_repos:

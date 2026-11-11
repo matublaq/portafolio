@@ -1,0 +1,44 @@
+[global]
+
+[logger]
+
+[client]
+showErrorDetails = "none"
+
+[runner]
+
+[server]
+# Desactiva la comprobación automática de la dirección de correo
+headless = true
+
+# Habilita el servidor estático
+enableStaticServing = true
+
+# Cambia el puerto en el que se ejecuta la app (por defecto 8501)
+port = 8501
+
+# Establece el límite máximo de tamaño para subir archivos (en MB)
+maxUploadSize = 200
+
+[browser]
+[theme]
+# Color principal (usado en botones, sliders, enlaces y destacados)
+primaryColor = "#EBC301"
+
+# Color de fondo principal de la aplicación
+backgroundColor = "#413D2B"
+
+# Color de fondo secundario (usado en la barra lateral/sidebar y tarjetas)
+secondaryBackgroundColor = "#6B6236"
+
+# Color principal del texto
+textColor = "#C0A520"
+
+# Tipografía ("sans serif", "serif", o "monospace")
+font = "sans serif"
+
+[theme.sidebar]
+primaryColor = "#33322B"
+
+[secrets]
+# None for a moment
