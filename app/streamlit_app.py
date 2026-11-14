@@ -12,7 +12,66 @@ st.html(
     </style>
     """
 )
-# ---------- Header ----------
+
+# ---------- pages ----------
+home_page = st.Page("pages/Home.py", title="Home", icon="🏠")
+campo_page = st.Page("pages/CampoProject.py", title="Farm", icon="🌾")
+co2_vehicle_contamination_page = st.Page("pages/CO2_contamination_vehicle.py", title="Vehicle contamination")
+inflation_page = st.Page("pages/Inflation.py", title="Inflation", icon="📈")
+
+# --- nav ---
+nav = st.navigation(
+    {
+        "HOME": [home_page],
+        "Base de datos": [inflation_page, campo_page, co2_vehicle_contamination_page]
+    }, 
+    position="hidden" # Oculta el nativo. 
+)
+
+# ---------- Header fijo ----------
+# st.markdown(
+#     """
+#     <style>
+#         .fixed-header {
+#             position: fixed; 
+#             top: 4rem;
+#             left: 3rem; 
+#             right: 3rem; 
+#             z-index: 999;
+
+#             height: 3rem; 
+
+#             display: flex; 
+#             align-items: center; 
+#             justify-content: center;
+#             padding: 1rem; 
+
+#             background-color: rgba(107, 98, 54, 0.35); /* Tu color #6B6236 pero con opacidad del 35% */
+#             backdrop-filter: blur(0.20rem);             /* Desenfoque del fondo (equivalente a ~12px) */
+#             -webkit-backdrop-filter: blur(0.75rem);     /* Compatibilidad con Safari */    
+
+#             border: 0.0625rem solid rgba(255, 255, 255, 0.15); /* Borde sutil brillante de cristal (1px) */
+#             border-radius: 1rem; 
+#             box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+
+#             box-sizing: border-box;
+#         }
+
+#         .block-container {
+#             padding-top: 8rem;
+#         }
+
+#     </style>
+    
+#     <div class="fixed-header">
+#         <a href='Home' style='text-decoration: none;'>
+#             <h1 style='text-align: center; font-size: 20px; color: #C0A520;'>Data News</h1>
+#         </a>
+#         <h2 style='font-size: 15px;'>Data science applied to news</h2>
+#     </div>
+#     """,
+#     unsafe_allow_html=True
+# )
 st.markdown(
     """
     <style>
@@ -22,115 +81,65 @@ st.markdown(
             left: 3rem; 
             right: 3rem; 
             z-index: 999;
-
-            height: 3rem; 
+            height: 3.5rem; 
 
             display: flex; 
             align-items: center; 
-            justify-content: center;
-            padding: 1rem; 
+            justify-content: center;  
+            padding: 0.5rem 1rem; 
 
-            background-color: rgba(107, 98, 54, 0.35); /* Tu color #6B6236 pero con opacidad del 35% */
-            backdrop-filter: blur(0.20rem);             /* Desenfoque del fondo (equivalente a ~12px) */
-            -webkit-backdrop-filter: blur(0.75rem);     /* Compatibilidad con Safari */    
+            background-color: rgba(107, 98, 54, 0.35); 
+            backdrop-filter: blur(0.20rem);            
+            -webkit-backdrop-filter: blur(0.75rem);    
 
-            border: 0.0625rem solid rgba(255, 255, 255, 0.15); /* Borde sutil brillante de cristal (1px) */
+            border: 0.0625rem solid rgba(255, 255, 255, 0.15); 
             border-radius: 1rem; 
             box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
-
             box-sizing: border-box;
+        }
+
+        /* Contenedor del enlace ajustado al texto */
+        .header-link {
+            text-decoration: none !important;
+            display: inline-flex;
+            flex-direction: row;
+            align-items: baseline;    /* <--- Alinea ambos textos por la base inferior de las palabras */
+            justify-content: center;  
+            gap: 30px;                
+            cursor: pointer;
+        }
+        
+        .header-link:hover .main-title {
+            color: #EBC301 !important; 
+        }
+
+        .main-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #C0A520;
+            line-height: 1;
+        }
+
+        .sub-title {
+            font-size: 12px;
+            color: #C0A520;
+            line-height: 1;
         }
 
         .block-container {
             padding-top: 8rem;
         }
-
     </style>
     
     <div class="fixed-header">
-        <h1 style='text-align: center; font-size: 20px;'>Data News</h1>
+        <a href="#" class="header-link">
+            <span class="main-title">Data News</span>
+            <span class="sub-title">Data science applied to news</span>
+        </a>
     </div>
     """,
     unsafe_allow_html=True
 )
 
-#---------- Home page ----------
-#--- Title, subtitle  and intoduction ---
-# st.markdown("<h1 style='margin-top: 100px; text-align: center; color: #C0A520';>Data news</h1>", unsafe_allow_html=True)
-st.markdown("<h4 style='text-align: center; color: #C0A520';>Data-science applied to news</h4>", unsafe_allow_html=True)
-st.markdown("<h6 style='text-align: center; color: #C0A520'> 100% official data. Source include in every new </h6>", unsafe_allow_html=True)
-
-st.divider()
-#--- Main news ---
-col1a, col2a = st.columns(2)
-with col1a: 
-    st.markdown("<p style='text-align: center;'>text</p>", unsafe_allow_html=True)
-with col2a: 
-    st.write("<p style='text-align: center;'>chart</p>", unsafe_allow_html=True)
-
-st.divider()
-#--- Projects ---
-# Functions.
-def project_card(image, link, title):
-    tarjeta_html = f"""
-    <a href="{link}" target="_blank" style="text-decoration: none;">
-        <div style="
-            width: 324px; 
-            height: 204px; 
-            border: 3px solid #33322B;
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-            background-color: #000000;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin: 15px auto;
-        ">
-            <img src="{image}" style="
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            ">
-            <div style="
-                position: absolute;
-                bottom: 0;
-                width: 100%;
-                background: rgba(0, 0, 0, 0.35);
-                color: white;
-                text-align: center;
-                padding: 10px;
-                font-family: sans-serif;
-                font-weight: bold;
-                font-size: 15px;
-            ">
-                {title}
-            </div>
-        </div>
-    </a>
-    """
-    st.markdown(tarjeta_html, unsafe_allow_html=True)
-
-col1b, col2b = st.columns(2)
-with col1b: 
-    project_card(image="/app/static/CO2_vehicle_contamination.png", link="CO2_contamination_vehicle", title="Vehicle contamination")
-    # project_card(image="None", link="")
-with col2b: 
-    project_card(image="/app/static/campo_project.jpeg", link="CampoProject", title="Campo")
-
-st.divider()
-# ---- Colors ----
-st.markdown("""
-    <style>
-        /* Estilos */
-        div[data-testid='stDivider'] {
-            margin-bottom: 0.0rem; 
-        }
-    </style>
-    <div style="display: flex; gap: 8px; width: 100%;">
-        <div style="flex: 1; height: 30px; background-color: #33322B; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">#33322B</div>
-        <div style="flex: 1; height: 30px; background-color: #413D2B; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">#413D2B</div>
-        <div style="flex: 1; height: 30px; background-color: #6B6236; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">#6B6236</div>
-        <div style="flex: 1; height: 30px; background-color: #968532; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">#968532</div>
-        <div style="flex: 1; height: 30px; background-color: #C0A520; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">#C0A520</div>
-        <div style="flex: 1; height: 30px; background-color: #EBC301; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px;">#EBC301</div>
-    </div>
-""", unsafe_allow_html=True)
+# ---------- Eejcutar el enrutador ----------
+nav.run()
