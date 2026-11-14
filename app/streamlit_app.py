@@ -111,13 +111,13 @@ def project_card(image, link, title):
 
 col1b, col2b = st.columns(2)
 with col1b: 
-    project_card(image="/app/static/CO2_vehicle_contamination.png", link="StockMarket", title="Vehicle contamination")
+    project_card(image="/app/static/CO2_vehicle_contamination.png", link="CO2_contamination_vehicle", title="Vehicle contamination")
+    # project_card(image="None", link="")
 with col2b: 
     project_card(image="/app/static/campo_project.jpeg", link="CampoProject", title="Campo")
 
 st.divider()
 # ---- Colors ----
-# Contenedor flex en HTML que NUNCA se romperá ni se pondrá en vertical. 
 st.markdown("""
     <style>
         /* Estilos */
